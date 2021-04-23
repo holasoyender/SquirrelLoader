@@ -1,6 +1,6 @@
 # SquirrelLoader
 
-Inyector DLL para CS:GO
+Inyector DLL para CS:GO escrito en C++
 
 # Forma de uso
 
