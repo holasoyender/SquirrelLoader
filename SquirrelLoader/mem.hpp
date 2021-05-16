@@ -29,7 +29,6 @@ public:
 	{
 		if (pid == 0)
 		{
-			std::cout << "[-] No he podido encontrar CS:GO, comprueba que lo tienes abierto\n";
 			return FALSE;
 		}
 

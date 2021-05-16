@@ -12,7 +12,13 @@ void bypass()
 		char originalBytes[5];
 		memcpy(originalBytes, ntOpenFile, 5); WriteProcessMemory(inj.process, ntOpenFile, originalBytes, 5, NULL);
 	} else {
-		cout << "[-] Imposible hacer bypass\n";
+		int msgboxID1 = MessageBox(
+			NULL,
+			"No se ha podido hacer Bypass",
+			"SquirrelLoader",
+			MB_ICONEXCLAMATION | MB_OK | MB_DEFBUTTON2
+		);
+		msgboxID1;
 		Sleep(2000); exit(-1);
 	}
 }
@@ -22,14 +28,19 @@ void Backup()
 		char originalBytes[5];
 		memcpy(originalBytes, ntOpenFile, 5); WriteProcessMemory(inj.process, ntOpenFile, originalBytes, 0, NULL);
 	} else {
-		cout << "[-] Imposible hacer backup\n";
+		int msgboxID2 = MessageBox(
+			NULL,
+			"No se ha podido hacer Backup",
+			"SquirrelLoader",
+			MB_ICONEXCLAMATION | MB_OK | MB_DEFBUTTON2
+		);
+		msgboxID2;
 		Sleep(2000); exit(-1);
 	}
 }
 int main()
 {
-	SetConsoleTitle("SquirrelLoader por holasoyender - github.com/holasoyender");
-	cout << "holasoyender\n	 SquirrelLoader V2\n\n" << endl;
+	FreeConsole();
 
 	inj.hwndproc = FindWindowA(0, "Counter-Strike: Global Offensive");
 
@@ -40,15 +51,48 @@ int main()
 	if (DoesFileExist("cheat.dll")) {
 		bypass();
 		if (inj.inject(pid, "cheat.dll")) {
-			cout << "[*] Modulo inyectado correctamente!\n\n" << endl;
+			int msgboxID3 = MessageBox(
+				NULL,
+				"DLL inyectado correctamente!",
+				"SquirrelLoader",
+				MB_ICONINFORMATION | MB_OK | MB_DEFBUTTON2
+			);
+			msgboxID3;
 			Backup(); Sleep(2000); exit(0);
 		} else {
-			cout << "[-] Inyeccion fallida!\n\n" << endl;
+			int msgboxID5 = MessageBox(
+				NULL,
+				"Inyeccion fallida, comprueba que tienes CS:GO abierto",
+				"SquirrelLoader",
+				MB_ICONEXCLAMATION | MB_RETRYCANCEL | MB_DEFBUTTON2
+			);
+			msgboxID5;
+			if (msgboxID5 == IDRETRY)
+				main();
+			{
+			}
+			if (msgboxID5 == IDCANCEL)
+			{
+				Backup(); Sleep(2000); exit(-1);
+			}
 			Backup(); Sleep(2000); exit(-1);
 		}
 	} else {
-		cout << "[-] No he podido encontrar cheat.dll\n";
-		cout << "[-] Inyeccion fallida!\n\n";
+		int msgboxID4 = MessageBox(
+			NULL,
+			"No se ha encontrado cheat.dll",
+			"SquirrelLoader",
+			MB_ICONEXCLAMATION | MB_RETRYCANCEL | MB_DEFBUTTON2
+		);
+		msgboxID4;
+		if (msgboxID4 == IDRETRY)
+			main();
+		{
+		}
+		if (msgboxID4 == IDCANCEL)
+		{
+			Backup(); Sleep(2000); exit(-1);
+		}
 		Sleep(2000); exit(-1);
 	}
 

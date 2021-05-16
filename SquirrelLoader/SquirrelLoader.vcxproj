@@ -28,6 +28,9 @@
   <ItemGroup>
     <ResourceCompile Include="SquirrelLoader.rc" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon1.ico" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
