@@ -1,7 +1,7 @@
 #include <Windows.h>
 #include <iostream>
-#include "mem.hpp"
-#include "isFile.hpp"
+#include "mem.h"
+#include "isFile.h"
 
 using namespace std; Injector inj; DWORD pid;
 LPVOID ntOpenFile = GetProcAddress(LoadLibraryW(L"ntdll"), "NtOpenFile");
