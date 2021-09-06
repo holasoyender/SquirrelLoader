@@ -19,10 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="main.cc" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="mem.hpp" />
+    <ClInclude Include="mem.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
