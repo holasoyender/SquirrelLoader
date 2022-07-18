@@ -42,7 +42,7 @@ int main()
 {
 	FreeConsole();
 
-	inj.hwndproc = FindWindowA(0, "Counter-Strike: Global Offensive");
+	inj.hwndproc = FindWindowA(0, "Counter-Strike: Global Offensive - Direct3D 9");
 
 	GetWindowThreadProcessId(inj.hwndproc, &pid);
 	inj.process = OpenProcess(PROCESS_ALL_ACCESS, FALSE, pid);
